@@ -54,8 +54,52 @@ hero = {
 # import the hero image
 knight_image = pygame.image.load('assets/Knight/Idle/0.png')
 
+"""
+Step 5: Make adjustments to our hero
+"""
+# make knight 3 times bigger
+knight_model = pygame.transform.scale(
+    knight_image, (knight_image.get_width() * 3, knight_image.get_height() * 3))
+
 # show the image on the screen
-screen.blit(knight_image, (0, 0))
+screen.blit(knight_model, (50, 177))
+
+
+"""
+Step 6: Create the enemies
+"""
+bandit_1 = {
+    "name": "Bandit 1",
+    "max_hp": 150,
+    "current_hp": 150,
+    "attack_dmg": 50,
+    "potions": 1,
+    "alive": True,
+}
+
+bandit_2 = {
+    "name": "Bandit 2",
+    "max_hp": 150,
+    "current_hp": 150,
+    "attack_dmg": 50,
+    "potions": 1,
+    "alive": True
+}
+
+"""
+Step 7: Make adjustments to bandit model and make it appear on screen
+"""
+# import the bandit image
+bandit_image = pygame.image.load('assets/Bandit/Idle/0.png')
+bandit_image = pygame.transform.scale(
+    bandit_image, (bandit_image.get_width() * 3, bandit_image.get_height() * 3))
+
+# make the bandit appear on screen
+bandit_1["model"] = bandit_image
+bandit_2["model"] = bandit_image
+
+screen.blit(bandit_1["model"], (480, 197))
+screen.blit(bandit_2["model"], (610, 197))
 
 """
 Last Step: To keep the game running and keep it updating

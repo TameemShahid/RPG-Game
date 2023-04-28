@@ -3,8 +3,9 @@ import pygame
 """
 Step 1: Create a screen
 """
+panel_size = 150
 screen_width = 800
-screen_height = 400
+screen_height = (400 + panel_size)
 
 # initialize/setup our game
 pygame.init()
@@ -28,6 +29,68 @@ screen.blit(background_image, (0, 0))
 """
 Step 3: Create Information Panel
 """
+# import the panel image
+panel_image = pygame.image.load('assets/panel.png')
+
+# make the panel show on the screen
+screen.blit(panel_image, (0, screen_height - panel_size))
+
+
+"""
+Step 4: Create a Character
+"""
+
+# create a dictionary (because it can have different data types) for our character
+hero = {
+    "name": "Fighter",  # name of the character
+    "max_hp": 250,  # max health of the character
+    # current health of the character that gets decreased as it goes into battle
+    "current_hp": 250,
+    "attack_dmg": 30,  # the attack our character can do
+    "potions": 3,  # healing ability our character has
+    "alive": True  # whether or not game is over
+}
+
+"""
+Step 5: Show the character on the screen
+"""
+# import the image of the hero
+hero_image = pygame.image.load('assets/Knight/Idle/0.png')
+
+"""
+Step 6: Make the character bigger and put it in correct position
+"""
+# used pygame.transform to scale up (make bigger) the image of character
+# then save the image in the "model" property of hero
+hero["model"] = pygame.transform.scale(
+    hero_image, (hero_image.get_width() * 3, hero_image.get_height() * 3))
+
+# show the character on the screen
+screen.blit(hero["model"], (70, 177))
+
+"""
+Step 7: Create the enemy characters
+"""
+bandit_1 = {
+    "name": "Bandit 1",  # name of the character
+    "max_hp": 150,  # max health of the character
+    # current health of the character that gets decreased as it goes into battle
+    "current_hp": 150,
+    "attack_dmg": 15,  # the attack our character can do
+    "potions": 1,  # healing ability our character has
+    "alive": True  # whether or not game is over
+}
+
+bandit_2 = {
+    "name": "Bandit 2",  # name of the character
+    "max_hp": 150,  # max health of the character
+    # current health of the character that gets decreased as it goes into battle
+    "current_hp": 150,
+    "attack_dmg": 15,  # the attack our character can do
+    "potions": 1,  # healing ability our character has
+    "alive": True  # whether or not game is over
+}
+
 
 """
 Last Step: To keep the game running and keep it updating
